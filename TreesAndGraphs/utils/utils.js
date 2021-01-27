@@ -12,32 +12,39 @@ const createTree = function(array) {
 		return null;
 	}
 
-	const results = [];
-
 	let root = null;
-	let nextSetOfChildren = 1;
+	let leftChildPos = 1;
+	let rightChildPos = leftChildPos + 1;
 	
-	for(let i=0; i<array.length; i++) {
-		let node = new TreeNode(array[i]);
-		
-		// Go get left and right child
-		let lChild = new TreeNode(array[i + nextSetOfChildren]);
-		let rChild = new TreeNode(array[i + (nextSetOfChildren + 1)]);
-		node.left = lChild;
-		node.right = rChild;
-
-		if(i === 0) {
-			root = node;
+	for(let i=0; i < array.length; i++) {
+		if(array[i]) {
+			array[i] = new TreeNode(array[i]);
 		}
-
-		nextSetOfChildren++;
-
-		results.push(node);
 	}
-	 
-	console.log(results);
+
+
+	for(let i=0; i < array.length; i++) {
+		let node = array[i];
+		if(node) {
+			// Go get left and right child
+			let lChild = array[leftChildPos] ? array[leftChildPos] : null;
+			let rChild = array[rightChildPos] ? array[rightChildPos] : null;
+			node.left = lChild;
+			node.right = rChild;
+
+			if(i === 0) {
+				root = node;
+			}
+
+			leftChildPos +=2;
+			rightChildPos = leftChildPos + 1;
+
+		}
+	}
 
 	return root;
 }
 
-createTree([3,5,1,6,2,9,8,null,null,7,4]);
+module.exports = {
+	createTree,
+}
