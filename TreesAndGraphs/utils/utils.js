@@ -45,6 +45,12 @@ const createTree = function(array) {
 	return root;
 }
 
+const preorderTraversal = function(root)
+ {
+	 console.log(root.val);
+	 preorderTraversal(root.left);
+	 preorderTraversal(root.right);
+ }
 const inorderTraversal = function(root) {
 	if(root === null) {
 		return;
@@ -53,6 +59,12 @@ const inorderTraversal = function(root) {
 	inorderTraversal(root.left);
 	console.log(root.val);
 	inorderTraversal(root.right);
+}
+
+const postorderTraversal = function(root) {
+	postorderTraversal(root.left);
+	postorderTraversal(root.right);
+	console.log(root.val);
 }
 
 module.exports = {
