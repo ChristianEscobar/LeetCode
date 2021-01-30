@@ -45,6 +45,18 @@ const createTree = function(array) {
 	return root;
 }
 
+const inorderTraversal = function(root) {
+	if(root === null) {
+		return;
+	}
+
+	inorderTraversal(root.left);
+	console.log(root.val);
+	inorderTraversal(root.right);
+}
+
 module.exports = {
 	createTree,
+	TreeNode,
+	inorderTraversal,
 }
