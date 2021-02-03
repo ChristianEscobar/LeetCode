@@ -7,6 +7,22 @@ function TreeNode(val, left, right) {
 	this.right = (right===undefined ? null : right)
 }
 
+/**
+ * Definition for a Node.
+ */
+function Node(val, children) {
+	this.val = val;
+ 	this.children = children;
+};
+
+/**
+ * Definition for a Node.
+ */
+function NaryNode(val, children) {
+ 	this.val = val;
+ 	this.children = children;
+ };
+
 const createTree = function(array) {
 	if(array.length === 0) {
 		return null;
@@ -45,6 +61,10 @@ const createTree = function(array) {
 	return root;
 }
 
+const createNaryTree = function(array) {
+	
+}
+
 const preorderTraversal = function(root)
  {
 	 console.log(root.val);
@@ -70,5 +90,9 @@ const postorderTraversal = function(root) {
 module.exports = {
 	createTree,
 	TreeNode,
+	Node,
+	NaryNode,
+	preorderTraversal,
 	inorderTraversal,
+	postorderTraversal,
 }
