@@ -4,17 +4,24 @@
  */
 var smallerNumbersThanCurrent = function(nums) {
 	const result = [];
-	for(let i=0; i < nums.length; i++) {
-		let counter = 0;
-		for(let j=0; j < nums.length; j++) {
-			if(j != i) {
-				if(nums[j] < nums[i]) {
-					counter++;
-				}
+	const counts = {};
+
+	const numsCopy = [...nums];
+	numsCopy.sort( (a, b) => a - b);
+
+	for(let i = 0; i < numsCopy.length; i++) {
+		// The first number in the array will have no other numbers before it
+		if(i === 0) {
+			counts[numsCopy[i]] = 0;
+		} else {
+			if(!counts.hasOwnProperty(numsCopy[i])) {
+				counts[numsCopy[i]] = i;
 			}
 		}
-
-		result.push(counter);
+	}
+	
+	for(let i = 0; i < nums.length; i++) {
+		result.push(counts[nums[i]]);
 	}
 
 	return result;
