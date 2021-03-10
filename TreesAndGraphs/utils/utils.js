@@ -87,6 +87,26 @@ const postorderTraversal = function(root) {
 	console.log(root.val);
 }
 
+const levelOrderTraversal = function(root) {
+	if(root === null) {
+		return null;
+	}
+
+	const queue = [];
+	queue.push(root);
+	while(queue.length > 0) {
+		const node = queue.shift();
+		console.log(node.val);
+		if(node.left) {
+			queue.push(node.left);
+		}
+		
+		if(node.right) {
+			queue.push(node.right);
+		}
+	}
+}
+
 module.exports = {
 	createTree,
 	TreeNode,
@@ -95,4 +115,5 @@ module.exports = {
 	preorderTraversal,
 	inorderTraversal,
 	postorderTraversal,
+	levelOrderTraversal,
 }
