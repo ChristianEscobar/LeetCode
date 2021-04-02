@@ -24,8 +24,26 @@ function minDiffInBST(root) {
 	return minDiff;
 }
 
-const root = [90,69,null,49,89,null,52];
-const treeRoot = createTree(root);
-// console.log(treeRoot);
-// preorderTraversal(treeRoot);
-console.log(minDiffInBST(treeRoot));
+var minDiffInBSTv2 = function(root) {
+	let result = Number.MAX_SAFE_INTEGER;
+	let prev = null;
+	
+	const walk = (node) => {
+			if(node.left) {
+					walk(node.left);
+			}
+			
+			result = Math.min(result, Math.abs(prev - node.val));
+			prev = node.val;
+			
+			if(node.right) {
+					walk(node.right);
+			}
+	}
+	
+	walk(root);
+	return result;
+};
+
+const tree = createTree([1,0,48,null,null,12,49]);
+console.log(minDiffInBSTv2(tree));
