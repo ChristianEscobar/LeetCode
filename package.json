@@ -1,0 +1,24 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Solutions to LeetCode problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianEscobar/LeetCode.git"
+  },
+  "author": "Christian Escobar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristianEscobar/LeetCode/issues"
+  },
+  "homepage": "https://github.com/ChristianEscobar/LeetCode#readme",
+  "dependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
