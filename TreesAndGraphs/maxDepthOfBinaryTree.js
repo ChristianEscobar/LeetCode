@@ -54,6 +54,19 @@ const maxDepthV2 = function (root) {
   return highestDepth;
 };
 
+const maxDepthV3 = function (root) {
+  if (root === null) {
+    return 0;
+  }
+
+  const leftDepth = maxDepth(root.left);
+  const rightDepth = maxDepth(root.right);
+  const pick = leftDepth > rightDepth
+    ? leftDepth + 1
+    : rightDepth + 1;
+  return pick;
+};
+
 // const root = new TreeNode(3);
 // const node9 = new TreeNode(9);
 // const node20 = new TreeNode(20);
