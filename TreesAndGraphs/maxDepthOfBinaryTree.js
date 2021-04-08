@@ -4,33 +4,54 @@ const { TreeNode, createTree } = require('./utils/utils');
  * @param {TreeNode} root
  * @return {number}
  */
-var maxDepth = function(root) {
-	var traverse = function(root) {
-		if(root === null) {
-			return;
-		}
+const maxDepth = function (root) {
+  const traverse = function (root) {
+    if (root === null) {
+      return;
+    }
 
-		++depthCounter;
+    ++depthCounter;
 
-		traverse(root.left);
-		traverse(root.right);
+    traverse(root.left);
+    traverse(root.right);
 
-		highestDepth = Math.max(depthCounter, highestDepth);
+    highestDepth = Math.max(depthCounter, highestDepth);
 
-		if(root) {
-			--depthCounter;
-		}	
-	}
+    if (root) {
+      --depthCounter;
+    }
+  };
 
-	let depthCounter = 0;
-	let highestDepth = 0;
+  let depthCounter = 0;
+  let highestDepth = 0;
 
-	if(root) {
-		highestDepth = -1;
-		traverse(root);
-	}
-	
-	return highestDepth;
+  if (root) {
+    highestDepth = -1;
+    traverse(root);
+  }
+
+  return highestDepth;
+};
+
+const maxDepthV2 = function (root) {
+  let highestDepth = 0;
+  if (root === null) {
+    return highestDepth;
+  }
+  const traverse = function (root, counter) {
+    if (root === null) {
+      return null;
+    }
+
+    counter++;
+    highestDepth = Math.max(highestDepth, counter);
+
+    traverse(root.left, counter);
+    traverse(root.right, counter);
+  };
+
+  traverse(root, 0);
+  return highestDepth;
 };
 
 // const root = new TreeNode(3);
@@ -45,6 +66,6 @@ var maxDepth = function(root) {
 // root.left = node9;
 // root.right = node20;
 
-const root = createTree([1,2,3,4,null,null,5]);
+const root = createTree([3, 9, 20, null, null, 15, 7]);
 
-console.log(maxDepth(root));
+console.log(maxDepthV2(root));

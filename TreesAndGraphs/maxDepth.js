@@ -4,31 +4,31 @@ const { NaryNode } = require('./utils/utils');
  * @param {Node} root
  * @return {number}
  */
-var maxDepth = function(root) {
-	var traverse = function(root) {
-		if(root === null) {
-			return;
-		}
+const maxDepth = function (root) {
+  const traverse = function (root) {
+    if (root === null) {
+      return;
+    }
 
-		if(root.children.length > 0) {
-			++depthCounter;
-			for(let i=0; i < root.children.length; i++) {
-				traverse(root.children[i]);
-			}
-			highestDepth = Math.max(depthCounter, highestDepth);
-			--depthCounter;
-		}
-	}
+    if (root.children.length > 0) {
+      ++depthCounter;
+      for (let i = 0; i < root.children.length; i++) {
+        traverse(root.children[i]);
+      }
+      highestDepth = Math.max(depthCounter, highestDepth);
+      --depthCounter;
+    }
+  };
 
-	let depthCounter = 1;
-	let highestDepth = 1;
+  let depthCounter = 1;
+  let highestDepth = 1;
 
-	if(root === null) {
-		highestDepth = 0;
-	}
+  if (root === null) {
+    highestDepth = 0;
+  }
 
-	traverse(root);
-	return highestDepth;
+  traverse(root);
+  return highestDepth;
 };
 
 const root = new NaryNode(1);
