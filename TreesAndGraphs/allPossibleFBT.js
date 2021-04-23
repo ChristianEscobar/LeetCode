@@ -38,4 +38,39 @@ const	allPossibleFBT = function (n) {
   return ans;
 };
 
+const	allPossibleFBTv2 = function (n) {
+  const memo = {
+    0: [],
+    1: [new TreeNode(0)],
+  };
+  function allPossibleFBTmemo(n) {
+    if (memo[n]) {
+      return memo[n];
+    }
+
+    const ans = [];
+
+    // Odd numbers of n only
+    for (let i = 1; i < n; i += 2) {
+      const leftTrees = allPossibleFBTmemo(i);
+      const rightTrees = allPossibleFBTmemo(n - i - 1); // 1 is the current node
+
+      leftTrees.forEach((left) => {
+        rightTrees.forEach((right) => {
+          const root = new TreeNode(0);
+          root.left = left;
+          root.right = right;
+
+          ans.push(root);
+        });
+      });
+    }
+
+    memo[n] = ans;
+    return ans;
+  }
+
+  return allPossibleFBT(n);
+};
+
 allPossibleFBT(7);
